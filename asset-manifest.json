@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/felix-owino-portfolio/static/css/main.58a0c615.css",
+    "main.js": "/felix-owino-portfolio/static/js/main.a81b7632.js",
+    "static/media/felix.png": "/felix-owino-portfolio/static/media/felix.2b9e64ea6b7753a0a768.png",
+    "index.html": "/felix-owino-portfolio/index.html",
+    "main.58a0c615.css.map": "/felix-owino-portfolio/static/css/main.58a0c615.css.map",
+    "main.a81b7632.js.map": "/felix-owino-portfolio/static/js/main.a81b7632.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.58a0c615.css",
+    "static/js/main.a81b7632.js"
+  ]
+}

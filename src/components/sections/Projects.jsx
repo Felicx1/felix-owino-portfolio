@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { projects } from "../../data/constants";
 import ProjectCard from "../cards/ProjectCard";
 
 const Container = styled.div`
-margin-top: 100px;
-display: flex;
-flex-direction: column;
-justify-content-center;
-position: relative;
-z-index: 1;
-padding: 0 16px;
-align-items: center;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content-center;
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+  align-items: center;
 `;
+
 const Wrapper = styled.div`
   position: relative;
   display: flex;
@@ -50,16 +50,16 @@ const Desc = styled.div`
 `;
 
 const ToggleButtonGroup = styled.div`
-display: flex;
-border: 1.5px solid ${({ theme }) => theme.primary};
-color: ${({ theme }) => theme.primary};
-font-size: 16px;
-border-radius: 12px;
-font-weight 500;
-margin: 22px 0;
-@media (max-width: 768px){
+  display: flex;
+  border: 1.5px solid ${({ theme }) => theme.primary};
+  color: ${({ theme }) => theme.primary};
+  font-size: 16px;
+  border-radius: 12px;
+  font-weight: 500;
+  margin: 22px 0;
+  @media (max-width: 768px) {
     font-size: 12px;
-}
+  }
 `;
 
 const ToggleButton = styled.div`
@@ -76,7 +76,7 @@ const ToggleButton = styled.div`
   ${({ active, theme }) =>
     active &&
     `
-  background:  ${theme.primary + 20};
+    background:  ${theme.primary + 20};
   `}
 `;
 
@@ -93,25 +93,59 @@ const CardContainer = styled.div`
   flex-wrap: wrap;
 `;
 
-const Projects = ({ openModal, setOpenModal }) => {
+const Projects = () => {
   const [toggle, setToggle] = useState("all");
+
+  // ✅ Hard-coded projects
+  const myProjects = [
+    {
+      id: 1,
+      title: "Listings & Advertising System (Suuq)",
+      date: "Live Project",
+      description:
+        "A listings & advertising platform for posting, browsing, searching, and managing multi-category listings with rich filters and user workflows.",
+      image: "", // optional (leave empty if you don't have an image)
+      tags: ["Vue", "Laravel", "REST API", "Listings", "Filters"],
+      category: "web app",
+      webapp: "https://suuq.clifford.co.ke/",
+    },
+    {
+      id: 2,
+      title: "HRM & Payroll SaaS (DoneQuick HRMS)",
+      date: "Live Project",
+      description:
+        "A multi-tenant HRM & payroll SaaS platform covering employee management, payroll runs, reports, and admin controls for organizations.",
+      image: "",
+      tags: ["Vue", "Laravel", "SaaS", "Multi-tenant", "Payroll"],
+      category: "web app",
+      webapp: "https://demo.donequicktechnologicalworld.com/",
+    },
+    {
+      id: 3,
+      title: "Freighter & Logistics System",
+      date: "Live Project",
+      description:
+        "A freight and logistics portal for managing shipments, operations workflows, and customer logistics processes end-to-end.",
+      image: "",
+      tags: ["Vue", "Laravel", "Logistics", "Operations", "Dashboards"],
+      category: "web app",
+      webapp: "https://portal.mflcoms.com",
+    },
+  ];
+
+  const filtered =
+    toggle === "all" ? myProjects : myProjects.filter((p) => p.category === toggle);
+
   return (
     <Container id="Projects">
       <Wrapper>
         <Title>Projects</Title>
-        <Desc
-          style={{
-            marginBottom: "40px",
-          }}
-        >
-          I have worked on a wide range of projects. From web apps to android
-          apps. Here are some of my projects.
+        <Desc style={{ marginBottom: "20px" }}>
+          Here are some of my key live projects.
         </Desc>
+
         <ToggleButtonGroup>
-          <ToggleButton
-            active={toggle === "all"}
-            onClick={() => setToggle("all")}
-          >
+          <ToggleButton active={toggle === "all"} onClick={() => setToggle("all")}>
             ALL
           </ToggleButton>
           <Divider />
@@ -119,41 +153,14 @@ const Projects = ({ openModal, setOpenModal }) => {
             active={toggle === "web app"}
             onClick={() => setToggle("web app")}
           >
-            WEB APP"S
-          </ToggleButton>
-          <Divider />
-          <ToggleButton
-            active={toggle === "android app"}
-            onClick={() => setToggle("android app")}
-          >
-            ANDROID APP'S
-          </ToggleButton>
-          <Divider />
-          <ToggleButton
-            active={toggle === "machine learning"}
-            onClick={() => setToggle("machine learning")}
-          >
-            MACHINE LEARNING
+            WEB APPS
           </ToggleButton>
         </ToggleButtonGroup>
+
         <CardContainer>
-          {toggle === "all" &&
-            projects.map((project) => (
-              <ProjectCard
-                project={project}
-                openModal={openModal}
-                setOpenModal={setOpenModal}
-              />
-            ))}
-          {projects
-            .filter((item) => item.category === toggle)
-            .map((project) => (
-              <ProjectCard
-                project={project}
-                openModal={openModal}
-                setOpenModal={setOpenModal}
-              />
-            ))}
+          {filtered.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </CardContainer>
       </Wrapper>
     </Container>

@@ -293,7 +293,7 @@ export const experiences = [
     img: "",
     role: "Full Stack Developer",
     company: "Reel Analytics Limited",
-    date: "Jan 2023 - Mar 2024",
+    date: "Jan 2023 - Dec 2025",
     desc: "I played a pivotal role in enhancing user experiences across their platforms, particularly on the Reelanalytics systems portal. By diligently identifying and addressing bugs, I successfully reduced load times by an impressive 40%, resulting in a smoother and more responsive user interface. Leveraging my expertise in React Js, I spearheaded the development of the Reelanalytics systems portal, seamlessly integrating REST APIs using AXIOS and optimizing performance with React Query. Moreover, I undertook the task of refactoring existing code to TypeScript, updated dependencies, and implemented Vite with Jest for robust unit testing, ensuring the scalability and reliability of our solutions",
     skills: [
       "ReactJS",
